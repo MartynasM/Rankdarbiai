@@ -1,33 +1,32 @@
 <p id="notice"><%= notice %></p>
 
-  <%= render @cart %>
+<%= render @cart %>
 
+<div class="container">
+  <h1 align="center">Listing products</h1>
+  <% @products.each_slice(4) do |products| %>
+    <div class="row">
+      <% products.each do |product| %>
+          <div class="col-lg-3 col-md-4 col-xs-12">
+            <%= link_to image_tag(product.image_url, class: 'list_image', size: '200x220'), product_path(product) %> <br /><br/>
+            <h4 class="group inner list-group-item-heading">
+            <%= link_to product.title, product_path(product) %></h4>
+            <p class="group inner list-group-item-text">
+              <%= truncate(product.description, length: 50) %>
+            </p>
+          <div class="row">
+              <div class="col-xs-12 col-md-6">
+                  <p class="lead">
+                      <%= number_to_currency(product.price) %></p>
 
-    <div class="container">
-      <h1 align="center">Listing products</h1>
-        <% @products.each_slice(4) do |products| %>
-              <div class="row">
-                <% products.each do |product| %>
-                    <div class="col-lg-3 col-md-4 col-xs-12">
-                      <%= link_to image_tag(product.image_url, class: 'list_image', size: '200x220'), product_path(product) %> <br /><br/>
-                      <h4 class="group inner list-group-item-heading">
-                      <%= link_to product.title, product_path(product) %></h4>
-                      <p class="group inner list-group-item-text">
-                        <%= truncate(product.description, length: 50) %>
-                      </p>
-                    <div class="row">
-                        <div class="col-xs-12 col-md-6">
-                            <p class="lead">
-                                <%= number_to_currency(product.price) %></p>
-
-                        </div>
-                        <div class="col-xs-12 col-md-6">
-                            <%= button_to 'Add to Cart', line_items_path(product_id: product),
-                                class: 'btn btn-success', remote: true %>
-                        </div>
-                      </div>
-                    </div>
-                <% end %>
               </div>
-        <% end %>
+              <div class="col-xs-12 col-md-6">
+                  <%= button_to 'Add to Cart', line_items_path(product_id: product),
+                      class: 'btn btn-success', remote: true %>
+              </div>
+            </div>
+          </div>
+      <% end %>
     </div>
+  <% end %>
+</div>

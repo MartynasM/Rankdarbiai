@@ -1,6 +1,6 @@
   <tbody>
     <div id="cart2">
-    <tr>
+    <tr data-line-item-id='<%= line_item.id %>' class='line-item'>
       <td data-th="Product">
         <div class="row" id="item">
           <div class="col-sm-2 hidden-xs"><img src="http://placehold.it/100x100" alt="..." class="img-responsive"/></div>
@@ -17,6 +17,7 @@
       <td data-th="Subtotal" class="text-center"><%= number_to_currency(line_item.total_price) %></td>
       <td class="actions" data-th="">
         <td><%= link_to "-", decrease_line_item_path(product_id: line_item.product), class:"btn btn-danger" %></td>
+        <td><%= link_to "--", '#', class:"btn btn-danger decrease" %></td>
         <td><%= link_to "+", increase_line_item_path(product_id: line_item.product), class:"btn btn-success" %></td>
       </td>
     </tr>

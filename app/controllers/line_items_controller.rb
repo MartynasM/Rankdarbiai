@@ -54,7 +54,7 @@ class LineItemsController < ApplicationController
   end
 
   def decrease
-    product = Product.find(params[:product_id])
+    product = LineItem.find(params[:id]).product
     @line_item = @cart.remove_product(product)
 
     respond_to do |format|
@@ -86,11 +86,12 @@ class LineItemsController < ApplicationController
   end
 
   private
-    def set_line_item
-      @line_item = LineItem.find(params[:id])
-    end
 
-    def line_item_params
-      params.require(:line_item).permit(:product_id)
-    end
+  def set_line_item
+    @line_item = LineItem.find(params[:id])
+  end
+
+  def line_item_params
+    params.require(:line_item).permit(:product_id)
+  end
 end
