@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyText
+  image_url: MyString
+  price: 9.99
+  quantity: 1
+
+two:
+  title: MyString
+  description: MyText
+  image_url: MyString
+  price: 9.99
+  quantity: 1
+
+product:
+  title:          Test product title
+  description:
+    Some description text goes here. Very long description.
+    Some description text goes here. Very long description.
+    Some description text goes here. Very long description.
+  price:          50
+  image_url:      product.png
+  quantity:       4

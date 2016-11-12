@@ -1,0 +1,4 @@
+$('#notice').hide();
+
+$('#number').html("<strong><%= @cart.line_items.map { |i| i[:quantity] }.sum %></strong>")
+$('#price').html("<strong><%= number_to_currency(@cart.line_items.map { |i| i.total_price }.sum, :unit => "€", separator: ",", format: "%n %u") %></strong>")
